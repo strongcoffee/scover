@@ -1,5 +1,6 @@
-class ScoverCommander {
+class ScoverCommander(parser: MissionParser) {
     def performMission(spec:String): String = {
-        "0 1 N"
+      val stuff = parser.parse(spec)
+      "0 1 N"
     }
 }

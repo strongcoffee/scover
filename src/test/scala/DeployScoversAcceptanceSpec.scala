@@ -14,7 +14,7 @@ class DeployScoversAcceptanceSpec extends Spec with ShouldMatchers {
   0 0 N
   M
   """
-      val commander = new ScoverCommander
+      val commander = new ScoverCommander(new MissionParser)
       commander.performMission(missionSpec) should equal ("0 1 N")
     }
 
@@ -25,7 +25,7 @@ class DeployScoversAcceptanceSpec extends Spec with ShouldMatchers {
   0 0 E 
   MLM
   """
-      val commander = new ScoverCommander
+      val commander = new ScoverCommander(new MissionParser)
       commander.performMission(missionSpec) should equal ("1 1 N")
     }
   }

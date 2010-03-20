@@ -2,11 +2,11 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{GivenWhenThen, FeatureSpec}
-
-
+import org.scalatest.mock.MockitoSugar
+import org.mockito.Mockito._
 
 @RunWith(classOf[JUnitRunner])
-class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with GivenWhenThen{
+class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with GivenWhenThen with MockitoSugar{
   feature("little scover takes first steps") {
 
     scenario("move forward") {
@@ -19,7 +19,8 @@ M
 """
       then("result should be .... - how do i not repeat it :(")
 
-      val commander = new ScoverCommander
+      val parser = mock[MissionParser]
+      val commander = new ScoverCommander(parser)
       commander.performMission(spec) should equal("0 1 N")
     }
 
@@ -30,7 +31,8 @@ M
 0 0 N
 L
 """
-      val commander = new ScoverCommander
+      val parser = mock[MissionParser]
+      val commander = new ScoverCommander(parser)
       commander.performMission(spec) should equal("0 0 W")
       pending
     }
@@ -44,7 +46,8 @@ L
 0 0 N
 R
 """
-      val commander = new ScoverCommander
+      val parser = mock[MissionParser]
+      val commander = new ScoverCommander(parser)
       commander.performMission(spec) should equal("0 1 E")
     }
 
@@ -58,12 +61,11 @@ R
 0 0 E
 MLM
 """
-      val commander = new ScoverCommander
+      val parser = mock[MissionParser]
+      val commander = new ScoverCommander(parser)
       commander.performMission(spec) should equal ("1 1 N")
 
     }
-
-
   }
 }
 
