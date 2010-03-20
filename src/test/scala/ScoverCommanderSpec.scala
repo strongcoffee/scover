@@ -3,11 +3,12 @@ import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
 import org.specs.Specification
-import org.specs.mock.Mockito
+import org.scalatest.mock.MockitoSugar
+import org.mockito.Mockito._
 
 
 @RunWith(classOf[JUnitRunner])
-class ScoverCommanderSpec extends Spec with ShouldMatchers with Mockito{
+class ScoverCommanderSpec extends Spec with ShouldMatchers with MockitoSugar {
 
   describe("scover commander") {
     it("should ask parser for rover position and command from mission spec") {
@@ -16,13 +17,15 @@ class ScoverCommanderSpec extends Spec with ShouldMatchers with Mockito{
 0 0 N
 M
 """
+      
       val parser = mock[MissionParser]
 
-      parser.parse(missionSpec) returns ((0,0,"N"),"M")
+      when(parser.parse(missionSpec)).thenReturn(((0,0,"N"),"M"))
 
-      (ScoverCommander).performMission(missionSpec)
+      val commander = new ScoverCommander
+      commander.performMission(missionSpec)
 
-      parser.parse(missionSpec).was called
+      verify(parser).parse(missionSpec)
     }
 
   }

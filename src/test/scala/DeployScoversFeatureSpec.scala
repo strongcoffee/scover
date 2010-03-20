@@ -18,7 +18,9 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
 M
 """
       then("result should be .... - how do i not repeat it :(")
-      (ScoverCommander).performMission(spec) should equal("0 1 N")
+
+      val commander = new ScoverCommander
+      commander.performMission(spec) should equal("0 1 N")
     }
 
     scenario("turn left"){
@@ -28,7 +30,8 @@ M
 0 0 N
 L
 """
-      (ScoverCommander).performMission(spec) should equal("0 0 W")
+      val commander = new ScoverCommander
+      commander.performMission(spec) should equal("0 0 W")
       pending
     }
 
@@ -41,7 +44,8 @@ L
 0 0 N
 R
 """
-      (ScoverCommander).performMission(spec) should equal("0 1 E")
+      val commander = new ScoverCommander
+      commander.performMission(spec) should equal("0 1 E")
     }
 
 
@@ -54,7 +58,8 @@ R
 0 0 E
 MLM
 """
-      (ScoverCommander).performMission(spec) should equal ("1 1 N")
+      val commander = new ScoverCommander
+      commander.performMission(spec) should equal ("1 1 N")
 
     }
 
