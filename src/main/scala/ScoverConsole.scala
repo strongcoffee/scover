@@ -14,10 +14,7 @@ object ScoverConsole {
 
     val spec = lines.reverse.foldRight("")((result, l) => result + "\n" + l).trim
 
-    val parser = new MissionParser
-    val commander = new ScoverCommander(parser)
-
-    print(commander.performMission(spec))
+    print(new ScoverCommander(new MissionParser).performMission(spec))
 
   }
 }

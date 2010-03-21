@@ -12,17 +12,16 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
   def runProgram(spec: String): String = {
 
     val in = new java.io.StringReader(spec)
+    val out = new java.io.ByteArrayOutputStream
 
-    val sout = new java.io.ByteArrayOutputStream
-    Console.withOut(sout) {
-
+    Console.withOut(out) {
       Console.withIn(in) {
+
         (ScoverConsole).main(new Array[String](0))
       }
-
     }
 
-    sout.toString
+    out.toString
 
   }
 
