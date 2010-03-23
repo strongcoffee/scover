@@ -33,8 +33,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
       val spec =
       """ |5 5
           |0 0 N
-          |M
-      """.stripMargin
+          |M""".stripMargin
 
       runProgram(spec) should equal("0 1 N")
     }
@@ -47,8 +46,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
       val spec =
       """ |5 5
           |0 0 N
-          |L
-      """.stripMargin
+          |L""".stripMargin
 
       runProgram(spec) should equal("0 0 W")
     }
@@ -60,8 +58,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
       val spec =
       """ |5 5
           |0 0 N
-          |R
-      """.stripMargin
+          |R""".stripMargin
 
       runProgram(spec) should equal("0 0 E")
     }
@@ -74,8 +71,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
       val spec =
       """ |5 5
           |0 0 E
-          |L MLM
-      """.stripMargin
+          |L MLM""".stripMargin
 
       runProgram(spec) should equal("1 1 N")
 

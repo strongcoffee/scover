@@ -7,12 +7,13 @@ object ScoverConsole {
     var line = Console.readLine
 
     while (line != null) {
-
       lines ::= line
       line = Console.readLine
     }
 
-    val spec = lines.reverse.foldRight("")((result, l) => result + "\n" + l).trim
+    val spec = lines.reduceLeft[String] { (acc, n) =>
+      n + "\n" + acc
+    }
 
     print(new ScoverCommander(new MissionParser).performMission(spec))
 
