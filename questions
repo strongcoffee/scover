@@ -1,0 +1,9 @@
+what are sealed classes?
+
+what is that weird matcher thing in
+
+case Success(tree, _) => tree
+
+what is the .r in regex("[MLR]".r)
+
+how to do multiple constructors 
