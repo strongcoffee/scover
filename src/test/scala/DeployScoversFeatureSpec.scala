@@ -62,20 +62,6 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
 
       runProgram(spec) should equal("0 0 E")
     }
-
-
-    scenario("practices some ballet") {
-
-      pending
-
-      val spec =
-      """ |5 5
-          |0 0 E
-          |L MLM""".stripMargin
-
-      runProgram(spec) should equal("1 1 N")
-
-    }
   }
 }
 

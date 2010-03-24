@@ -1,0 +1,1 @@
+case class Mission(p: Plateau, r: List[Rover]) { }
