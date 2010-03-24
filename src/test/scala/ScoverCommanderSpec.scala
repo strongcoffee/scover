@@ -19,12 +19,10 @@ M
       
       val parser = mock[MissionParser]
 
-      when(parser.parse(missionSpec)).thenReturn(((0,0,"N"),"M"))
-
       val commander = new ScoverCommander(parser)
       commander.performMission(missionSpec)
 
-      verify(parser).parse(missionSpec)
+      verify(parser).parseMission(missionSpec)
     }
 
   }
