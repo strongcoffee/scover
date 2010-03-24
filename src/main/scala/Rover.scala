@@ -1,1 +1,1 @@
-case class Rover(x: Int, y: Int, direction: String) { }
+case class Rover(x: Int, y: Int, direction: String, commands: List[Command]) { }
