@@ -3,7 +3,6 @@ import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
 import org.scalatest.mock.MockitoSugar
-import org.mockito.Mockito._
 
 
 @RunWith(classOf[JUnitRunner])
@@ -24,7 +23,7 @@ class RoverSpec extends Spec with ShouldMatchers with MockitoSugar {
       rover.direction should be ("E")
     }
 
-    it ("move") {
+    it("move") {
       val rover = Rover(0, 1, "N", List(Command("M")))
       rover.run
 
