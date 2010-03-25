@@ -1,1 +1,1 @@
-case class Mission(p: Plateau, r: List[Rover]) { }
+case class Mission(plateau: Plateau, rovers: List[Rover]) { }
