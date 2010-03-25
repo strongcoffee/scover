@@ -9,20 +9,17 @@ import org.mockito.Mockito._
 @RunWith(classOf[JUnitRunner])
 class ScoverCommanderSpec extends Spec with ShouldMatchers with MockitoSugar {
 
-  describe("scover commander") {
-    it("should ask parser for rover position and command from mission spec") {
-      val missionSpec =
-"""
-0 0 N
-M
-"""
-      
-      val parser = mock[MissionParser]
+  describe("scover commander should") {
+    it("run all rovers") {
 
-      val commander = new ScoverCommander(parser)
-      commander.performMission(missionSpec)
+      val rover = mock[Rover]
+      val mission = Mission(null, List(rover))
 
-      verify(parser).parseMission(missionSpec)
+      val commander = new ScoverCommander
+
+      commander.performMission(mission)
+
+      verify(rover).run
     }
 
   }

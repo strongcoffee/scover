@@ -15,7 +15,9 @@ object ScoverConsole {
       n + "\n" + acc
     }
 
-    print(new ScoverCommander(new MissionParser).performMission(spec))
+    val mission: Mission = (new MissionParser).parseMission(spec)
+    val commander: ScoverCommander = new ScoverCommander
+    print(commander.performMission(mission))
 
   }
 }

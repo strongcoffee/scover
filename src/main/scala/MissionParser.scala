@@ -2,7 +2,6 @@ import util.parsing.combinator.RegexParsers
 
 class MissionParser extends RegexParsers {
 
-  def space = regex("[ \\n]+".r)
   def numberLiteral = regex("[0-9]".r)
   def directionLiteral = regex("[NSEW]".r)
   def commandLiteral = regex("[MLR]".r)

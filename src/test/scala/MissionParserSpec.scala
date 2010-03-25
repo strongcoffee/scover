@@ -2,55 +2,82 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
-import org.scalatest.mock.MockitoSugar
 import util.parsing.combinator.Parsers
 
 
 @RunWith(classOf[JUnitRunner])
-class MissionParserSpec extends Spec with ShouldMatchers with MockitoSugar with Parsers {
+class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
+  describe("mission parser should") {
+    it("parse a move command") {
+      val s = "M"
+      val parser = new MissionParser
+      val command: Command = parser.parse(parser.command, s).get
 
-  describe("test regex parser") {
-
-    it("should parse a mission with only a plateau") {
-
-      (new MissionParser).parseMission("5 6") should equal(Mission(Plateau(5, 6), List[Rover]()))
+      command.command should be (s)
     }
 
-    it("should parse a mission with a plateau and one rover") {
+    it("parse a left command") {
+      val s = "L"
+      val parser = new MissionParser
+      val command: Command = parser.parse(parser.command, s).get
 
-      val spec = """5 6
-                   |1 1 E
-                   |ML""".stripMargin
-
-      (new MissionParser).parseMission(spec) should equal(Mission(Plateau(5, 6), List(Rover(1, 1, "E",
-        List(Command("M"), Command("L"))))))
-
+      command.command should be (s)
     }
 
-
-    it("should parse a mission with a plateau and two rovers") {
-
-      val spec = """5 6
-                   |1 1 E
-                   |M
-                   |3 2 W
-                   |L R""".stripMargin
-
-      (new MissionParser).parseMission(spec) should equal(Mission(Plateau(5, 6),
-        List(Rover(1, 1, "E", List(Command("M"))),
-          Rover(3, 2, "W", List(Command("L"), Command("R"))))))
-
+    it("parse a right command") {
+      val s = "R"
+      val parser = new MissionParser
+      val command: Command = parser.parse(parser.command, s).get
+      
+      command.command should be (s)
     }
 
-    it("should not accept junk") {
+    it ("parse multiple commands") {
+      val s = "MLR"
+      val parser = new MissionParser
+      val commands: List[Command] = parser.parse(parser.commands, s).get
 
-      val caught = intercept[IllegalArgumentException] {
-        (new MissionParser).parseMission("tom's work")
+      commands.size should be (3)
+      commands.contains(Command("M")) should be (true)
+      commands.contains(Command("L")) should be (true)
+      commands.contains(Command("R")) should be (true)
+    }
+
+    it ("parse a plateau") {
+      val s = "2 3"
+      val parser = new MissionParser
+      val plateau: Plateau = parser.parse(parser.plateau, s).get
+
+      plateau.x should be (2)
+      plateau.y should be (3)
+    }
+
+    it ("parse a rover") {
+      val s = "1 2 N\nLMR"
+      val parser = new MissionParser
+      val rover: Rover = parser.parse(parser.rover, s).get
+
+      rover.x should be (1)
+      rover.y should be (2)
+      rover.direction should be ("N")
+
+      val commands = rover.commands
+      commands.size should be (3)
+      commands.contains(Command("M")) should be (true)
+      commands.contains(Command("L")) should be (true)
+      commands.contains(Command("R")) should be (true)
+    }
+
+    it("throw runtime exception when presented with unknown command") {
+      val s = "C"
+      val parser = new MissionParser
+
+      try {
+        parser.parse(parser.command, s)
+      } catch {
+        case e: RuntimeException => e should be ("No result when parsing failed")
+        case _ => fail
       }
-      caught.getMessage should be ("Bad syntax: tom's work")
-
     }
   }
-
-
 }

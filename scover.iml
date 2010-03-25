@@ -3,14 +3,15 @@
   <component name="FacetManager">
     <facet type="Scala" name="Scala">
       <configuration>
+        <option name="takeFromSettings" value="true" />
         <option name="myScalaCompilerJarPaths">
           <array>
-            <option value="$MODULE_DIR$/../../../Library/Application Support/IntelliJIdea90CE/Scala/lib/scala-compiler.jar" />
+            <option value="$MODULE_DIR$/../../warez/scala-2.7.7.final/lib/scala-compiler.jar" />
           </array>
         </option>
         <option name="myScalaSdkJarPaths">
           <array>
-            <option value="$MODULE_DIR$/../../../Library/Application Support/IntelliJIdea90CE/Scala/lib/scala-library.jar" />
+            <option value="$MODULE_DIR$/../../warez/scala-2.7.7.final/lib/scala-library.jar" />
           </array>
         </option>
       </configuration>
