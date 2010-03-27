@@ -1,8 +1,8 @@
-class ScoverCommander() {
-    def performMission(mission: Mission): String = {
-      val rover = mission.rovers(0)
-      rover.run
+case class ScoverCommander(parser: MissionParser) {
 
-      rover.x + " " + rover.y + " " + rover.direction
+    def performMission(missionSpec: String): String = {
+
+        parser.parseMission(missionSpec)
+        ""
     }
 }
