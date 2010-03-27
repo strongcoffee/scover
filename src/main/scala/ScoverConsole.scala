@@ -1,7 +1,7 @@
 import io.Source
 
-object ScoverConsole {
-  def main(args: Array[String]) = {
+object ScoverConsole extends Application {
+
 
     var lines = List[String]()
     var line = Console.readLine
@@ -19,5 +19,5 @@ object ScoverConsole {
     val commander = ScoverCommander(new MissionParser)
     print(commander.performMission(spec))
 
-  }
+  
 }
