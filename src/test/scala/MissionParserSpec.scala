@@ -37,10 +37,7 @@ class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
       val parser = new MissionParser
       val commands: List[Command] = parser.parse(parser.commands, s).get
 
-      commands.size should be (3)
-      commands.contains(Command("M")) should be (true)
-      commands.contains(Command("L")) should be (true)
-      commands.contains(Command("R")) should be (true)
+      commands should be (Command("M") :: Command("L") :: Command("R") :: Nil)
     }
 
     it ("parse a plateau") {
@@ -60,12 +57,8 @@ class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
       rover.x should be (1)
       rover.y should be (2)
       rover.direction should be ("N")
+      rover.commands should be (Command("L") :: Command("M") :: Command("R") :: Nil)
 
-      val commands = rover.commands
-      commands.size should be (3)
-      commands.contains(Command("M")) should be (true)
-      commands.contains(Command("L")) should be (true)
-      commands.contains(Command("R")) should be (true)
     }
 
     it("throw runtime exception when presented with unknown command") {
