@@ -11,18 +11,23 @@ class ScoverCommanderSpec extends Spec with ShouldMatchers with MockitoSugar {
 
   describe("scover commander") {
 
-    it("should parse mission using mission parser") {
+    it("should parse mission using mission parser, start mission and return rover's final position") {
+
+      val spec = "spec"
+      val finalPosition = (0, 1, "E")
+
+      val mission = mock[Mission]
+      when(mission.run).thenReturn(finalPosition)
 
       val missionParser = mock[MissionParser]
-      val commander = new ScoverCommander(missionParser)
+      when(missionParser.parseMission(spec)).thenReturn(mission)
 
-      commander.performMission("foo")
+      new ScoverCommander(missionParser).performMission(spec) should be (finalPosition.toString)
 
-      verify(missionParser).parseMission("foo")
+      verify(missionParser).parseMission(spec)
+      verify(mission).run
 
     }
-
-    
     
 
   }

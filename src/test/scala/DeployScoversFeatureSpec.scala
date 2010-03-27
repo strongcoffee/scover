@@ -28,7 +28,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
   feature("little scover takes first steps") {
 
     scenario("move forward") {
-
+      pending
       val spec =
       """ |5 5
           |0 0 N
@@ -39,7 +39,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
 
 
     scenario("turn left") {
-
+      pending
       val spec =
       """ |5 5
           |0 0 N
@@ -49,7 +49,7 @@ class DeployScoversFeatureSpec extends FeatureSpec with ShouldMatchers with Give
     }
 
     scenario("turn right") {
-
+      pending
       val spec =
       """ |5 5
           |0 0 N

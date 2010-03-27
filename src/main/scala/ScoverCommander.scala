@@ -1,8 +1,10 @@
 case class ScoverCommander(parser: MissionParser) {
 
-    def performMission(missionSpec: String): String = {
+  def performMission(missionSpec: String): String = {
 
-        parser.parseMission(missionSpec)
-        ""
-    }
+    val mission = parser.parseMission(missionSpec)
+
+    mission.run.toString
+
+  }
 }
