@@ -2,9 +2,9 @@ import util.parsing.combinator.RegexParsers
 
 class MissionParser extends RegexParsers {
 
-  def numberLiteral = regex("[0-9]".r)
-  def directionLiteral = regex("[NSEW]".r)
-  def commandLiteral = regex("[MLR]".r)
+  def numberLiteral = regex("[0-9]"r)
+  def directionLiteral = regex("[NSEW]"r)
+  def commandLiteral = regex("[MLR]"r)
 
   def command:Parser[Command] = commandLiteral ^^ { case c => Command(c) }
   def rover:Parser[Rover] = numberLiteral ~ numberLiteral ~ directionLiteral ~ commands ^^ { case x ~ y ~ d ~ c => Rover(x.toInt, y.toInt, d, c) }
