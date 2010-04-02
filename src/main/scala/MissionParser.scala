@@ -14,7 +14,8 @@ class MissionParser extends RegexParsers {
   def commands:Parser[List[Command]] = (command *)
   def rovers:Parser[List[Rover]] = (rover *)
 
-  def mission:Parser[Mission] = plateau ~ rovers ^^ {case p ~ r  => Mission(p,r)}
+  //def mission:Parser[Mission] = plateau ~ rovers ^^ {case p ~ r  => Mission(p,r)}
+  def mission:Parser[Mission] = plateau ~ rover ^^ {case p ~ r  => Mission(p,r)}
 
 
   def parseMission(s:String): Mission = {

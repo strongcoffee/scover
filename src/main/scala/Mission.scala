@@ -1,4 +1,6 @@
-case class Mission(plateau: Plateau, rovers: List[Rover]) {
+case class Mission(plateau: Plateau, rover: Rover) {
 
-  def run(): (int, int, String) = (0,0,"E")
+  def run(): (Int, Int, String) = {
+    rover.run
+  }
 }
