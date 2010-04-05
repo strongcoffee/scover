@@ -1,9 +1,20 @@
 what are sealed classes?
 
-what is that weird matcher thing in
+what is scala.unit
 
-case Success(tree, _) => tree
+how to do multiple constructors in case objects
+
+how do they get the when and verify mockito methods in the spec?
+
+why did toms stuff work for all the tests
+
+what is diff btw array and list, why wd u use one over the other?
+
+do case constructors interfere with the "apply" method?
+
+ANSWERED
 
 what is the .r in regex("[MLR]".r)
 
-how to do multiple constructors 
+what is that weird matcher thing in
+case Success(tree, _) => tree
