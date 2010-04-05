@@ -1,9 +1,9 @@
 import io.Source
 
-object ScoverConsole extends Application {
+object ScoverConsole {
+  def main(args: Array[String]) = {
 
-
-    var lines : List[String] = Nil
+    var lines :List[String] = Nil
     var line = Console.readLine
 
     while (line != null) {
@@ -15,7 +15,9 @@ object ScoverConsole extends Application {
       n + "\n" + acc
     }
 
-    print(ScoverCommander(new MissionParser).performMission(spec))
 
-  
+    val commander = ScoverCommander(new MissionParser)
+    print(commander.performMission(spec))
+
+  }
 }
