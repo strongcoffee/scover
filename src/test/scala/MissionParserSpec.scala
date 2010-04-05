@@ -49,15 +49,15 @@ class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
       plateau.y should be (3)
     }
 
-    it ("parse a rover") {
+    it ("parse a scover") {
       val s = "1 2 N\nLMR"
       val parser = new MissionParser
-      val rover: Rover = parser.parse(parser.rover, s).get
+      val scover: Scover = parser.parse(parser.scover, s).get
 
-      rover.x should be (1)
-      rover.y should be (2)
-      rover.direction should be ("N")
-      rover.commands should be (Command("L") :: Command("M") :: Command("R") :: Nil)
+      scover.x should be (1)
+      scover.y should be (2)
+      scover.direction should be ("N")
+      scover.commands should be (Command("L") :: Command("M") :: Command("R") :: Nil)
 
     }
 

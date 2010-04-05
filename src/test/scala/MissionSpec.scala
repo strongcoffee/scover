@@ -9,16 +9,16 @@ import org.mockito.Mockito._
 class MissionSpec extends Spec with ShouldMatchers with MockitoSugar {
 
   describe("mission") {
-    it("should run rover and return rover's final position") {
-      val rover = mock[Rover]
+    it("should run scover and return scover's final position") {
+      val scover = mock[Scover]
       val plateau = mock[Plateau]
-      val mission = Mission(plateau, rover)
+      val mission = Mission(plateau, scover)
 
-      when(rover.run).thenReturn((0, 0, "E"))
+      when(scover.run).thenReturn((0, 0, "E"))
 
       mission.run should be ((0, 0, "E"))
       
-      verify(rover).run
+      verify(scover).run
     }
   }
 }

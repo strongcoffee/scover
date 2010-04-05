@@ -1,6 +1,6 @@
-case class Mission(plateau: Plateau, rover: Rover) {
+case class Mission(plateau: Plateau, scover: Scover) {
 
   def run(): (Int, Int, String) = {
-    rover.run
+    scover.run
   }
 }
