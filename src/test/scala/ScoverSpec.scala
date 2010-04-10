@@ -10,26 +10,35 @@ class ScoverSpec extends Spec with ShouldMatchers with MockitoSugar {
 
   describe("scover") {
     it("should turn left") {
-      Scover(1, 1, "N", List(Command("L"))).run should be (1,1,"W")
-      Scover(1, 1, "E", List(Command("L"))).run should be (1,1,"N")
-      Scover(1, 1, "S", List(Command("L"))).run should be (1,1,"E")
-      Scover(1, 1, "W", List(Command("L"))).run should be (1,1,"S")
-      //given {startPosIs => (1,1,"N")} and {commandIs => Command("L")} when scoverIsRun then "endPos" should be (1,1,"W")
+
+      Map("N"->"W", "E"->"N", "S"->"E", "W"->"S").foreach{ case(before, after) =>
+
+        Scover(1, 1, before, List(Command("L"))).run should be (1,1,after)
+      }
     }
 
     it("should turn right") {
-      Scover(1, 1, "N", List(Command("R"))).run should be (1,1,"E")
-      Scover(1, 1, "E", List(Command("R"))).run should be (1,1,"S")
-      Scover(1, 1, "S", List(Command("R"))).run should be (1,1,"W")
-      Scover(1, 1, "W", List(Command("R"))).run should be (1,1,"N")
+
+      Map("N"->"E", "E"->"S", "S"->"W", "W"->"N").foreach{ case(before, after) =>
+
+        Scover(1, 1, before, List(Command("R"))).run should be (1,1,after)
+      }
+
     }
 
     it("should move") {
-      Scover(0, 1, "N", List(Command("M"))).run should be (0,2,"N")
-      Scover(0, 1, "E", List(Command("M"))).run should be (1,1,"E")
-      Scover(0, 1, "S", List(Command("M"))).run should be (0,0,"S")
-      Scover(0, 1, "W", List(Command("M"))).run should be (-1,1,"W")
 
+      val (x,y) = (23432,666)
+
+      Map((x,y,"N")->(x,   y+1, "N"),
+          (x,y,"E")->(x+1, y,   "E"),
+          (x,y,"S")->(x,   y-1, "S"),
+          (x,y,"W")->(x-1, y,   "W")
+
+        ).foreach{ case(before, after) =>
+
+        Scover(before._1, before._2, before._3, List(Command("M"))).run should be (after)
+      }
     }
 
 
