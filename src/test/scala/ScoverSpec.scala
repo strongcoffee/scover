@@ -6,7 +6,7 @@ import org.scalatest.mock.MockitoSugar
 
 
 @RunWith(classOf[JUnitRunner])
-class ScoverSpec extends Spec with ShouldMatchers with MockitoSugar {
+class ScoverSpec extends Spec with ShouldMatchers {
 
   describe("scover") {
     it("should turn left") {
