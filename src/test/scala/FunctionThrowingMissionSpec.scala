@@ -26,4 +26,17 @@ class FunctionThrowingMissionSpec extends Spec with ShouldMatchers {
 
   }
 
+  describe("Commands"){
+
+    it("should do as i command, just like everything else in the universe") {
+
+      Befehl.turnLeft (4,5,"W") should be ( (4,5,"S")  )
+      Befehl.turnRight (2,1,"W") should be ( (2,1,"N")  )
+      Befehl.move (2,1,"W") should be ( (1,1,"W")  )
+      Befehl.move (2,-1,"N") should be ( (2,0,"N")  )
+    }
+
+    
+  }
+
 }

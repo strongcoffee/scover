@@ -1,5 +1,7 @@
 
-type alias
+how to define functions not within a class
+
+implicit conversion from int to double for radians thingy ?
 
 make a mission trait
 
@@ -10,7 +12,8 @@ refactor scoverCommanderSpec to have a setup method
 
 
 
-DONDE
+DONE
+type alias
 change console to extend application (tried this - had problems running main class multiple times in featurespec)
 
 
