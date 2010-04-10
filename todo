@@ -1,0 +1,23 @@
+
+type alias
+
+make a mission trait
+
+randomInt - little faker library to stop toms naughty hardcoded implementations
+add full mission parse to missionParserSpec
+improve how tom compares the lists
+refactor scoverCommanderSpec to have a setup method
+
+
+
+DONDE
+change console to extend application (tried this - had problems running main class multiple times in featurespec)
+
+
+
+NOTEWORTHY
+scala 2.8 has default function params and named arguments
+StringUtils.joiner for lists
+
+
+
