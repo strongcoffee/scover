@@ -36,7 +36,25 @@ class FunctionThrowingMissionSpec extends Spec with ShouldMatchers {
       Befehl.move (2,-1,"N") should be ( (2,0,"N")  )
     }
 
-    
+    it("should apply functions from the command strings"){
+
+      val scover = Scover(0,0,"N",List(Command("M"), Command("L"), Command("M")))
+
+      FunctionThrowingMission(Plateau(5,5), scover).run should be (-1,1,"W") 
+
+    }
+
+    it("should give starting position when no commands"){
+
+      val scover = Scover(654,232,"E",Nil)
+
+      FunctionThrowingMission(Plateau(5,5), scover).run should be ((scover.x, scover.y, scover.direction))
+
+    }
+
+
   }
+
+
 
 }

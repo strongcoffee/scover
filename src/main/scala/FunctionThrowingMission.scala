@@ -4,11 +4,16 @@ case class FunctionThrowingMission(plateau: Plateau, scover: Scover) {
 
   type Position = (Int, Int, String)
 
-  def run(): Position = {
+  val commands: List[Position => Position] = scover.commands map {
 
-    (3, 3, "N")
-
+    case Command(name) => name match {  // get rid of the Command wrapper class - go strings!!
+         case "L" => Befehl.turnLeft
+         case "R" => Befehl.turnRight
+         case "M" => Befehl.move
+      }
   }
+
+  def run(): Position = ((scover.x, scover.y, scover.direction) /: commands) { (acc,c) => c(acc) }
 
 
 }
