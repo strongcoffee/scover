@@ -6,12 +6,12 @@ class MissionParser extends RegexParsers {
   def directionLiteral = regex("[NSEW]"r)
   def commandLiteral = regex("[MLR]"r)
 
-  def command:Parser[Command] = commandLiteral ^^ { case c => Command(c) }
+  def command:Parser[String] = commandLiteral ^^ { c => c }
   def scover:Parser[Scover] = numberLiteral ~ numberLiteral ~ directionLiteral ~ commands ^^ { case x ~ y ~ d ~ c => Scover(x.toInt, y.toInt, d, c) }
   def plateau:Parser[Plateau] = numberLiteral ~ numberLiteral ^^ { case x ~ y => Plateau(x.toInt, y.toInt) }
 
 
-  def commands:Parser[List[Command]] = (command *)
+  def commands:Parser[List[String]] = (command *)
   def rovers:Parser[List[Scover]] = (scover *)
 
   //def mission:Parser[Mission] = plateau ~ rovers ^^ {case p ~ r  => Mission(p,r)}

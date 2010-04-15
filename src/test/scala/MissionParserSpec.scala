@@ -11,33 +11,33 @@ class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
     it("parse a move command") {
       val s = "M"
       val parser = new MissionParser
-      val command: Command = parser.parse(parser.command, s).get
+      val command = parser.parse(parser.command, s).get
 
-      command.command should be (s)
+      command should be (s)
     }
 
     it("parse a left command") {
       val s = "L"
       val parser = new MissionParser
-      val command: Command = parser.parse(parser.command, s).get
+      val command = parser.parse(parser.command, s).get
 
-      command.command should be (s)
+      command should be (s)
     }
 
     it("parse a right command") {
       val s = "R"
       val parser = new MissionParser
-      val command: Command = parser.parse(parser.command, s).get
+      val command = parser.parse(parser.command, s).get
       
-      command.command should be (s)
+      command should be (s)
     }
 
     it ("parse multiple commands") {
       val s = "MLR"
       val parser = new MissionParser
-      val commands: List[Command] = parser.parse(parser.commands, s).get
+      val commands = parser.parse(parser.commands, s).get
 
-      commands should be (Command("M") :: Command("L") :: Command("R") :: Nil)
+      commands should be ("M" :: "L" :: "R" :: Nil)
     }
 
     it ("parse a plateau") {

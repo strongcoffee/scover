@@ -23,7 +23,7 @@ class MissionIntegrationSpec extends Spec with ShouldMatchers {
 
           spec.foreach{ case(startPos, endPos) => 
 
-            val scover = Scover(startPos._1, startPos._2, startPos._3, List(Command(command)))
+            val scover = Scover(startPos._1, startPos._2, startPos._3, List(command))
 
             Mission(plateau, scover).run should be (endPos)
 

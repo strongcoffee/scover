@@ -30,17 +30,17 @@ class FunctionThrowingMissionSpec extends Spec with ShouldMatchers {
 
     it("should do as i command, just like everything else in the universe") {
 
-      Befehl.turnLeft (4,5,"W") should be ( (4,5,"S")  )
-      Befehl.turnRight (2,1,"W") should be ( (2,1,"N")  )
-      Befehl.move (2,1,"W") should be ( (1,1,"W")  )
-      Befehl.move (2,-1,"N") should be ( (2,0,"N")  )
+      Befehl.turnLeft(Position(4,5,"W")) should be ( Position(4,5,"S")  )
+      Befehl.turnRight(Position(2,1,"W")) should be ( Position(2,1,"N")  )
+      Befehl.move(Position(2,1,"W")) should be ( Position(1,1,"W")  )
+      Befehl.move(Position(2,-1,"N")) should be ( Position(2,0,"N")  )
     }
 
     it("should apply functions from the command strings"){
 
-      val scover = Scover(0,0,"N",List(Command("M"), Command("L"), Command("M")))
+      val scover = Scover(0,0,"N",List("M", "L", "M"))
 
-      FunctionThrowingMission(Plateau(5,5), scover).run should be (-1,1,"W") 
+      FunctionThrowingMission(Plateau(5,5), scover).run should be (Position(-1,1,"W")) 
 
     }
 
@@ -48,7 +48,7 @@ class FunctionThrowingMissionSpec extends Spec with ShouldMatchers {
 
       val scover = Scover(654,232,"E",Nil)
 
-      FunctionThrowingMission(Plateau(5,5), scover).run should be ((scover.x, scover.y, scover.direction))
+      FunctionThrowingMission(Plateau(5,5), scover).run should be (Position(scover.x, scover.y, scover.direction))
 
     }
 

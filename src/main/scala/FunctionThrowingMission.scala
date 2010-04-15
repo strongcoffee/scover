@@ -2,35 +2,33 @@ import scala.Math._
 
 case class FunctionThrowingMission(plateau: Plateau, scover: Scover) {
 
-  type Position = (Int, Int, String)
-
   val commands: List[Position => Position] = scover.commands map {
 
-    case Command(name) => name match {  // get rid of the Command wrapper class - go strings!!
+    case c => c match {  // get rid of the Command wrapper class - go strings!!
          case "L" => Befehl.turnLeft
          case "R" => Befehl.turnRight
          case "M" => Befehl.move
       }
   }
 
-  def run(): Position = ((scover.x, scover.y, scover.direction) /: commands) { (acc,c) => c(acc) }
+  def run(): Position = (Position(scover.x, scover.y, scover.direction) /: commands) { (acc,c) => c(acc) }
 
 
 }
 
 object Befehl {
 
-  type Position = (Int, Int, String)
-  
-  def turnLeft(start: Position) = (start._1, start._2, Direction.anticlockwise(start._3))
+  def turnLeft(start: Position) = Position(start.x, start.y, Direction.anticlockwise(start.direction))
 
-  def turnRight(start: Position) = (start._1, start._2, Direction.clockwise(start._3))
+  def turnRight(start: Position) = Position(start.x, start.y, Direction.clockwise(start.direction))
 
   def move(start: Position) = {
-    val angle = Direction.angles(start._3).toDouble.toRadians
-    ( (cos(angle)+start._1).toInt, (sin(angle)+start._2) .toInt, start._3)
+    val angle = Direction.angles(start.direction).toDouble.toRadians
+    Position( (cos(angle)+start.x).toInt, (sin(angle)+start.y) .toInt, start.direction)
   }
 }
+
+case class Position(x: Int, y: int, direction: String) { }
 
 
 object Direction {

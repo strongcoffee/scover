@@ -13,7 +13,7 @@ class ScoverSpec extends Spec with ShouldMatchers {
 
       Map("N"->"W", "E"->"N", "S"->"E", "W"->"S").foreach{ case(before, after) =>
 
-        Scover(1, 1, before, List(Command("L"))).run should be (1,1,after)
+        Scover(1, 1, before, List("L")).run should be (1,1,after)
       }
     }
 
@@ -21,7 +21,7 @@ class ScoverSpec extends Spec with ShouldMatchers {
 
       Map("N"->"E", "E"->"S", "S"->"W", "W"->"N").foreach{ case(before, after) =>
 
-        Scover(1, 1, before, List(Command("R"))).run should be (1,1,after)
+        Scover(1, 1, before, List("R")).run should be (1,1,after)
       }
 
     }
@@ -37,7 +37,7 @@ class ScoverSpec extends Spec with ShouldMatchers {
 
         ).foreach{ case(before, after) =>
 
-        Scover(before._1, before._2, before._3, List(Command("M"))).run should be (after)
+        Scover(before._1, before._2, before._3, List("M")).run should be (after)
       }
     }
 
