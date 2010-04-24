@@ -57,7 +57,7 @@ class MissionParserSpec extends Spec with ShouldMatchers with Parsers {
       scover.x should be (1)
       scover.y should be (2)
       scover.direction should be ("N")
-      scover.commands should be (Command("L") :: Command("M") :: Command("R") :: Nil)
+      scover.commands should be ("L" :: "M" :: "R" :: Nil)
 
     }
 
